@@ -674,40 +674,41 @@ function addon:OnEnable()
 	-------------------------------------------------------------------------------
 	-- Initialize the player's data.
 	-------------------------------------------------------------------------------
-	do
-		Player.faction = UnitFactionGroup("player")
-		Player["Class"] = select(2, UnitClass("player"))
+	C_Timer:After(5, function()
+		do
+			Player.faction = UnitFactionGroup("player")
+			Player["Class"] = select(2, UnitClass("player"))
 
-		-------------------------------------------------------------------------------
-		-- Get the player's professions.
-		-------------------------------------------------------------------------------
-		Player.professions = {
-			[GetSpellInfo(51304)]	= false, -- Alchemy
-			[GetSpellInfo(51300)]	= false, -- Blacksmithing
-			[GetSpellInfo(51296)]	= false, -- Cooking
-			[GetSpellInfo(51313)]	= false, -- Enchanting
-			[GetSpellInfo(51306)]	= false, -- Engineering
-			[GetSpellInfo(45542)]	= false, -- First Aid
-			[GetSpellInfo(51302)]	= false, -- Leatherworking
-			[GetSpellInfo(2656)]	= false, -- Smelting
-			[GetSpellInfo(51309)]	= false, -- Tailoring
-			[GetSpellInfo(51311)]	= false, -- Jewelcrafting
-			[GetSpellInfo(45363)]	= false, -- Inscription
-			[private.runeforging_name]	= false, -- Runeforging
-		}
-		Player:SetProfessions()
+			-------------------------------------------------------------------------------
+			-- Get the player's professions.
+			-------------------------------------------------------------------------------
+			Player.professions = {
+				[GetSpellInfo(51304)]	= false, -- Alchemy
+				[GetSpellInfo(51300)]	= false, -- Blacksmithing
+				[GetSpellInfo(51296)]	= false, -- Cooking
+				[GetSpellInfo(51313)]	= false, -- Enchanting
+				[GetSpellInfo(51306)]	= false, -- Engineering
+				[GetSpellInfo(45542)]	= false, -- First Aid
+				[GetSpellInfo(51302)]	= false, -- Leatherworking
+				[GetSpellInfo(2656)]	= false, -- Smelting
+				[GetSpellInfo(51309)]	= false, -- Tailoring
+				[GetSpellInfo(51311)]	= false, -- Jewelcrafting
+				[GetSpellInfo(45363)]	= false, -- Inscription
+				[private.runeforging_name]	= false, -- Runeforging
+			}
+			Player:SetProfessions()
 
-		-------------------------------------------------------------------------------
-		-- Set the scanned state for all professions to false.
-		-------------------------------------------------------------------------------
-		Player.has_scanned = {}
+			-------------------------------------------------------------------------------
+			-- Set the scanned state for all professions to false.
+			-------------------------------------------------------------------------------
+			Player.has_scanned = {}
 
-		for profession in pairs(Player.professions) do
-			Player.has_scanned[profession] = false
-		end
+			for profession in pairs(Player.professions) do
+				Player.has_scanned[profession] = false
+			end
 
-	end	-- do
-
+		end	-- do
+	end)
 	-------------------------------------------------------------------------------
 	-- Initialize the SpecialtyTable and AllSpecialtiesTable.
 	-------------------------------------------------------------------------------
