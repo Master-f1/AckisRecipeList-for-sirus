@@ -674,7 +674,7 @@ function addon:OnEnable()
 	-------------------------------------------------------------------------------
 	-- Initialize the player's data.
 	-------------------------------------------------------------------------------
-	C_Timer:After(10, function()
+	--C_Timer:After(10, function()
 		do
 			Player.faction = UnitFactionGroup("player")
 			Player["Class"] = select(2, UnitClass("player"))
@@ -708,7 +708,7 @@ function addon:OnEnable()
 			end
 
 		end	-- do
-	end)
+	--end)
 	-------------------------------------------------------------------------------
 	-- Initialize the SpecialtyTable and AllSpecialtiesTable.
 	-------------------------------------------------------------------------------
