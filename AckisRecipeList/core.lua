@@ -674,7 +674,7 @@ function addon:OnEnable()
 	-------------------------------------------------------------------------------
 	-- Initialize the player's data.
 	-------------------------------------------------------------------------------
-	C_Timer:After(5, function()
+	C_Timer:After(10, function()
 		do
 			Player.faction = UnitFactionGroup("player")
 			Player["Class"] = select(2, UnitClass("player"))
